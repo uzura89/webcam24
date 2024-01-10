@@ -26,16 +26,11 @@ const PLACE_ID_DANISH_FOREST = "danish-forest";
 const PLACE_ID_INTERNATIONAL_SPACE_STATION = "international-space-station";
 const PLACE_ID_NEFL_EAGLE_NEST = "nefl-eagle-nest";
 const PLACE_ID_CYULU_HILLS_WATERHOLE = "ol-donyo-lodge-waterhole";
-const PLACE_ID_OLIFANTS_WEST_GAME_RESERVE = "olifants-west-game-reserve";
 const PLACE_ID_NORTHERN_LIGHTS_CHURCHILL = "northern-lights-churchill";
-const PLACE_ID_MADIKWE_GAME_RESERVE = "madikwe-game-reserve";
 const PLACE_ID_KENYA_OL_JOGI_WATERHOLE = "kenya-ol-jogi-waterhole";
-const PLACE_ID_LESSER_FLAMINGOS_AT_KAMFERS_DAM =
-  "lesser-flamingos-at-kamfers-dam";
 const PLACE_ID_GORILLA_FOREST_CORRIDOR_KASUGHO =
   "gorilla-forest-corridor-kasugho";
 const PLACE_ID_FAIRBANKS_AURORA = "fairbanks-aurora";
-// const PLACE_ID_DUMPLING_MOUNTAIN = "dumpling-mountain";
 
 // city
 const PLACE_ID_TIMES_SQUARE = "times-square";
@@ -48,12 +43,10 @@ const PLACE_ID_VENICE_BEACH = "venice-beach";
 const PLACE_ID_PA_KENSINGTON_AVE = "pa-kensington-ave";
 const PLACE_ID_HEATHROW_AIRPORT = "heathrow-airport";
 const PLACE_ID_BIG_BUDDHA_BEACH = "big-buddha-beach";
-// const PLACE_ID_HANEDA_AIRPORT = "haneda-airport";
 const PLACE_ID_MICHIGAN_PORT_HURON = "michigan-port-huron";
 const PLACE_ID_SHINJUKU_CROSSINGS = "shinjuku-crossings";
 const PLACE_ID_NEWYORK_UPPER_EAST_SIDE = "newyork-upper-east-side";
 const PLACE_ID_BICYCLE_CROSSING_AMSTERDAM = "bicycle-crossing-amsterdam";
-const PLACE_ID_SOLIMAN_STREET_DAVAO_CITY = "soliman-street-davao-city";
 const PLACE_ID_MINI_STORE_IN_DAVAO_CITY = "mini-store-in-davao-city";
 const PLACE_ID_TOKYO_DINER = "tokyo-diner";
 
@@ -123,19 +116,6 @@ export const places = [
     gmtOffset: 2,
     hasAmbientSound: true,
   },
-  // {
-  //   id: PLACE_ID_BOA_WINTER_VILLAGE_SKATE,
-  //   youtubeVideoId: "ZNJg-IPeZms",
-  //   categoryId: CATEGORY_CITY,
-  //   description: "Bank of America Winter Village Skate",
-  //   addressSpot: "Bank of America Winter Village Skate",
-  //   addressRegion: "New York",
-  //   addressCountry: "USA",
-  //   locationLng: -73.9851,
-  //   locationLat: 40.7589,
-  //   gmtOffset: -4,
-  //   hasAmbientSound: false,
-  // },
   {
     id: PLACE_ID_BANGKOK_SUKHUMVIT_ROAD,
     youtubeVideoId: "TfOOzM6mPT4",
@@ -175,19 +155,6 @@ export const places = [
     gmtOffset: 7,
     hasAmbientSound: true,
   },
-  // {
-  //   id: PLACE_ID_KOH_SAMUI_SOI_GREEN_MANGO,
-  //   youtubeVideoId: "qgNTbBn0JCY",
-  //   categoryId: CATEGORY_CITY,
-  //   description: "Soi Green Mango",
-  //   addressSpot: "Soi Green Mango",
-  //   addressRegion: "Koh Samui",
-  //   addressCountry: "Thailand",
-  //   locationLng: 100.5018,
-  //   locationLat: 13.7367,
-  //   gmtOffset: 7,
-  //   hasAmbientSound: true,
-  // },
   {
     id: PLACE_ID_INTERNATIONAL_SPACE_STATION,
     youtubeVideoId: "P9C25Un7xaM",
@@ -201,19 +168,6 @@ export const places = [
     gmtOffset: 0,
     hasAmbientSound: false,
   },
-  // {
-  //   id: PLACE_ID_BIG_BEAR_EAGLE_NEST,
-  //   youtubeVideoId: "B4-L2nfGcuE",
-  //   categoryId: CATEGORY_NATURE,
-  //   description: "Big Bear Eagle Nest",
-  //   addressSpot: "Big Bear Eagle Nest",
-  //   addressRegion: "Big Bear",
-  //   addressCountry: "USA",
-  //   locationLng: -116.8555,
-  //   locationLat: 34.2439,
-  //   gmtOffset: -7,
-  //   hasAmbientSound: true,
-  // },
   {
     id: PLACE_ID_VENICE_BEACH,
     youtubeVideoId: "3LXQWU67Ufk",
@@ -280,19 +234,6 @@ export const places = [
     hasAmbientSound: true,
   },
   {
-    id: PLACE_ID_OLIFANTS_WEST_GAME_RESERVE,
-    youtubeVideoId: "pZZst4BOpVI",
-    categoryId: CATEGORY_NATURE,
-    description: "Olifants West Game Reserve",
-    addressSpot: "Olifants West Game Reserve",
-    addressRegion: "Olifants West Game Reserve",
-    addressCountry: "South Africa",
-    locationLng: 24.4167,
-    locationLat: -24.4167,
-    gmtOffset: 2,
-    hasAmbientSound: true,
-  },
-  {
     id: PLACE_ID_NORTHERN_LIGHTS_CHURCHILL,
     youtubeVideoId: "a0i1Kg6fROg",
     categoryId: CATEGORY_NATURE,
@@ -303,32 +244,6 @@ export const places = [
     locationLng: -94.1549,
     locationLat: 58.768,
     gmtOffset: -5,
-    hasAmbientSound: true,
-  },
-  // {
-  //   id: PLACE_ID_HANEDA_AIRPORT,
-  //   youtubeVideoId: "x_fHq3B_UP4",
-  //   categoryId: CATEGORY_CITY,
-  //   description: "Haneda Airport",
-  //   addressSpot: "Haneda Airport",
-  //   addressRegion: "Tokyo",
-  //   addressCountry: "Japan",
-  //   locationLng: 139.7005,
-  //   locationLat: 35.6591,
-  //   gmtOffset: 9,
-  //   hasAmbientSound: true,
-  // },
-  {
-    id: PLACE_ID_MADIKWE_GAME_RESERVE,
-    youtubeVideoId: "DsNtwGJXTTs",
-    categoryId: CATEGORY_NATURE,
-    description: "Madikwe Game Reserve",
-    addressSpot: "Madikwe Game Reserve",
-    addressRegion: "Madikwe Game Reserve",
-    addressCountry: "South Africa",
-    locationLng: 24.4167,
-    locationLat: -24.4167,
-    gmtOffset: 2,
     hasAmbientSound: true,
   },
   {
@@ -342,19 +257,6 @@ export const places = [
     locationLng: 37.8955,
     locationLat: -2.3333,
     gmtOffset: 3,
-    hasAmbientSound: true,
-  },
-  {
-    id: PLACE_ID_LESSER_FLAMINGOS_AT_KAMFERS_DAM,
-    youtubeVideoId: "3MlJEXOZTfo",
-    categoryId: CATEGORY_NATURE,
-    description: "Lesser Flamingos at Kamfers Dam",
-    addressSpot: "Lessor Flamingos at Kamfers Dam",
-    addressRegion: "Kimberley",
-    addressCountry: "South Africa",
-    locationLng: 24.7758,
-    locationLat: -28.7468,
-    gmtOffset: 2,
     hasAmbientSound: true,
   },
   {
@@ -396,19 +298,6 @@ export const places = [
     gmtOffset: 7,
     hasAmbientSound: true,
   },
-  // {
-  //   id: PLACE_ID_DUMPLING_MOUNTAIN,
-  //   youtubeVideoId: "dXp23eXXTOU",
-  //   categoryId: CATEGORY_NATURE,
-  //   description: "Dumpling Mountain",
-  //   addressSpot: "Dumpling Mountain",
-  //   addressRegion: "Alaska",
-  //   addressCountry: "USA",
-  //   locationLng: -149.9003,
-  //   locationLat: 61.2181,
-  //   gmtOffset: -8,
-  //   hasAmbientSound: true,
-  // },
   {
     id: PLACE_ID_MICHIGAN_PORT_HURON,
     youtubeVideoId: "6F1ABQXtCmI",
@@ -460,19 +349,6 @@ export const places = [
     locationLat: 52.3792,
     gmtOffset: 2,
     hasAmbientSound: false,
-  },
-  {
-    id: PLACE_ID_SOLIMAN_STREET_DAVAO_CITY,
-    youtubeVideoId: "p0Qhe4vhYLQ",
-    categoryId: CATEGORY_CITY,
-    description: "Soliman Street Davao City",
-    addressSpot: "Soliman Street Davao City",
-    addressRegion: "Davao City",
-    addressCountry: "Philippines",
-    locationLng: 125.6297,
-    locationLat: 7.1907,
-    gmtOffset: 8,
-    hasAmbientSound: true,
   },
   {
     id: PLACE_ID_MINI_STORE_IN_DAVAO_CITY,
