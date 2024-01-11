@@ -2,7 +2,7 @@ import React, { useRef, useEffect, useMemo } from "react";
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 
-import { LocationType, PlaceType } from "@/types/place.types";
+import { LocationType } from "@/types/place.types";
 import { useEnvStore } from "@/store/envStore";
 import { usePlayerStore } from "@/store/playerStore";
 
@@ -91,7 +91,7 @@ const initFlyingMapBox = (props: {
     map.flyTo({
       center: [props.toLocation.lng, props.toLocation.lat],
       essential: true, // This ensures the animation is smooth and uninterrupted
-      zoom: isToLocationSpace ? 1 : 8,
+      zoom: isToLocationSpace ? 1 : 7,
       speed: 0.6,
     });
   });

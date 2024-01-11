@@ -23,18 +23,19 @@ export const usePlaceStore = create<PlaceState>((set) => ({
   prevPlace: undefined,
   setNextPlace: () =>
     set((state) => {
+      // increment placeIndex by 1
       const newPlaceIndex =
         state.placeIndex + 1 >= state.allPlaces.length
           ? 0
           : state.placeIndex + 1;
 
-      const prevPlace = state.currentPlace;
+      const currentPlace = state.currentPlace;
       const nextPlace = state.allPlaces[newPlaceIndex];
 
       return {
         placeIndex: newPlaceIndex,
         currentPlace: nextPlace,
-        prevPlace,
+        prevPlace: currentPlace,
       };
     }),
 

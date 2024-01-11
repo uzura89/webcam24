@@ -10,15 +10,19 @@ import { usePlaceStore } from "@/store/placeStore";
 import { VideoPlayer } from "./sub/VideoPlayer";
 import { VideoController } from "./sub/VideoController";
 import { usePlayerStore } from "@/store/playerStore";
+import { LandingSection } from "../../organisms/LandingSection";
+import { useIntervaManager } from "./sub/useIntervalManager";
 
 export default function HomeTemplate(props: { places: PlaceType[] }) {
   const setAllPlaces = usePlaceStore((state) => state.setAllPlaces);
-  const setNextPlace = usePlaceStore((state) => state.setNextPlace);
+
+  function initializePlaceStore() {
+    setAllPlaces(props.places);
+  }
 
   useEffect(() => {
     if (props.places.length > 0) {
-      setAllPlaces(props.places);
-      setNextPlace();
+      initializePlaceStore();
     }
   }, [props.places]);
 
@@ -37,14 +41,28 @@ function MainVideoPage() {
   // hooks
   const [isMobile] = useDeviceType();
   const [viewHeight] = useViewHeight();
+  const { goToNextPlace } = useIntervaManager();
+  // global state
+  const hasStartButtonClicked = usePlayerStore(
+    (state) => state.hasStartButtonClicked
+  );
   // variables
   const controllerHeight = isMobile ? 100 : 160;
   const videoHeight = viewHeight - controllerHeight;
+  const isHeightCalculated = videoHeight > 0;
+
+  if (!isHeightCalculated)
+    return <div className="h-full w-full bg-black">Loading...</div>;
+
+  if (!hasStartButtonClicked) {
+    return <LandingSection goToNextPlace={goToNextPlace} />;
+  }
 
   return (
     <div className="h-full flex-col justify-stretch">
+      {/* Video Section */}
       <div
-        className="relative"
+        className="relative flex-grow"
         style={{
           height: videoHeight,
         }}
@@ -52,13 +70,14 @@ function MainVideoPage() {
         <VideoSection videoHeight={videoHeight} />
       </div>
 
+      {/* Controller Section */}
       <div
         className="relative"
         style={{
           height: controllerHeight,
         }}
       >
-        <VideoController />
+        <VideoController goToNextPlace={goToNextPlace} />
       </div>
     </div>
   );

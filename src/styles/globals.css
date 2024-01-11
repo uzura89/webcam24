@@ -30,10 +30,13 @@ body {
     @apply cursor-pointer hover:opacity-100 active:opacity-80 transition-all duration-75 ease-out;
   }
   .form {
-    @apply bg-white rounded-md px-[14px] py-[8px] placeholder-[foreLight];
+    @apply bg-zinc-800 border border-zinc-950 rounded-md px-[14px] py-[8px] placeholder-[foreLight];
   }
   .keep-height {
     @apply h-full flex flex-col justify-stretch;
+  }
+  .background {
+    @apply bg-gradient-to-b from-zinc-700 to-zinc-800;
   }
 }
 

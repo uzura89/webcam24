@@ -1,6 +1,9 @@
 import { create } from "zustand";
 
 type PlayerState = {
+  hasStartButtonClicked: boolean;
+  startButtonClicked: () => void;
+
   inTransition: boolean;
   finishTransition: () => void;
   startTransition: () => void;
@@ -11,11 +14,14 @@ type PlayerState = {
 
   isAutoNextPaused: boolean;
   pauseAutoNext: () => void;
-  resumeAutoNext: () => void;
+  enableAutoNext: () => void;
 };
 
 export const usePlayerStore = create<PlayerState>((set) => ({
-  inTransition: true,
+  hasStartButtonClicked: false,
+  startButtonClicked: () => set(() => ({ hasStartButtonClicked: true })),
+
+  inTransition: false,
   finishTransition: () => {
     set(() => ({ inTransition: false }));
   },
@@ -23,12 +29,12 @@ export const usePlayerStore = create<PlayerState>((set) => ({
     set(() => ({ inTransition: true }));
   },
 
-  secondsUntilNext: 0,
+  secondsUntilNext: 10,
   decrementSecondsUntilNext: () =>
     set((state) => ({ secondsUntilNext: state.secondsUntilNext - 1 })),
   setSecondsUntilNext: (seconds) => set(() => ({ secondsUntilNext: seconds })),
 
   isAutoNextPaused: false,
   pauseAutoNext: () => set(() => ({ isAutoNextPaused: true })),
-  resumeAutoNext: () => set(() => ({ isAutoNextPaused: false })),
+  enableAutoNext: () => set(() => ({ isAutoNextPaused: false })),
 }));

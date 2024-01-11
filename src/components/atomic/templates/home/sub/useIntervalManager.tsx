@@ -1,7 +1,8 @@
-import { useConfigStore } from "@/store/configStore";
+import { useEffect, useRef } from "react";
+
+import { selectConfigObject, useConfigStore } from "@/store/configStore";
 import { usePlaceStore } from "@/store/placeStore";
 import { usePlayerStore } from "@/store/playerStore";
-import { useEffect, useRef } from "react";
 import { useShallow } from "zustand/react/shallow";
 
 export function useIntervaManager() {
@@ -23,14 +24,11 @@ export function useIntervaManager() {
       decrementSecondsUntilNext: state.decrementSecondsUntilNext,
       inTransition: state.inTransition,
       isAutoNextPaused: state.isAutoNextPaused,
+      hasStartButtonClicked: state.hasStartButtonClicked,
+      startButtonClicked: state.startButtonClicked,
     }))
   );
-  const configStore = useConfigStore(
-    useShallow((state) => ({
-      intervalSecNextPlace: state.intervalSecNextPlace,
-      autoNextPlace: state.autoNextPlace,
-    }))
-  );
+  const configObject = useConfigStore(selectConfigObject);
 
   /**
    * Functions
@@ -39,8 +37,9 @@ export function useIntervaManager() {
   const goToNextPlace = () => {
     placeStore.setNextPlace();
     playerStore.startTransition();
+    playerStore.startButtonClicked();
     clearInterval(intervalRef.current);
-    playerStore.setSecondsUntilNext(configStore.intervalSecNextPlace);
+    playerStore.setSecondsUntilNext(configObject.intervalSecNextPlace);
   };
 
   const startCountdown = () => {
@@ -65,15 +64,19 @@ export function useIntervaManager() {
 
   useEffect(() => {
     if (
-      configStore.autoNextPlace &&
       !playerStore.inTransition &&
       placeStore.currentPlace &&
-      !playerStore.isAutoNextPaused
+      !playerStore.isAutoNextPaused &&
+      playerStore.hasStartButtonClicked
     ) {
       startCountdown();
       placeStore.incrementLoadedPlaceCnt();
     }
-  }, [placeStore.currentPlace?.id, playerStore.inTransition]);
+  }, [
+    placeStore.currentPlace?.id,
+    playerStore.inTransition,
+    playerStore.hasStartButtonClicked,
+  ]);
 
   useEffect(() => {
     if (placeStore.loadedPlaceCnt === 0) return;

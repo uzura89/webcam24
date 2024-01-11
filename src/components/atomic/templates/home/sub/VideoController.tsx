@@ -3,31 +3,22 @@ import { useShallow } from "zustand/react/shallow";
 import StaticMap from "@/components/atomic/organisms/StaticMap";
 import { APP_DOMAIN } from "@/cons/brand.cons";
 import { usePlaceStore } from "@/store/placeStore";
-import { getLocationFromPlace, LocationType } from "@/types/place.types";
-import { useIntervaManager } from "./useIntervalManager";
+import { getLocationFromPlace, PlaceType } from "@/types/place.types";
 import { MonitorDisplay } from "@/components/atomic/atoms/wrapper/MonitorDisplay";
 import { PlaceAndTime } from "./PlaceAndTime";
 import { ControllerButtons } from "./ControllerButtons";
 
-export function VideoController(props: {}) {
+export function VideoController(props: { goToNextPlace: () => void }) {
   // place store
   const currentPlace = usePlaceStore(useShallow((state) => state.currentPlace));
-  const { goToNextPlace } = useIntervaManager();
-
-  if (!currentPlace) return null;
 
   return (
-    <div className="h-full w-full flex justify-start items-center border-[#444444] border-t bg-gradient-to-b from-zinc-700 to-zinc-800">
+    <div className="h-full w-full flex justify-start items-center background">
       {/* Main Section */}
       <div className="h-full flex-grow">
         <MainSection
-          location={getLocationFromPlace(currentPlace)}
-          placeId={currentPlace.id}
-          addressSpot={currentPlace.addressSpot}
-          addressRegion={currentPlace.addressRegion}
-          addressCountry={currentPlace.addressCountry}
-          goToNextPlace={goToNextPlace}
-          gmtOffset={currentPlace.gmtOffset}
+          currentPlace={currentPlace}
+          goToNextPlace={props.goToNextPlace}
         />
       </div>
 
@@ -52,12 +43,7 @@ function VerticalBorder() {
 }
 
 function MainSection(props: {
-  placeId: string;
-  location: LocationType;
-  addressSpot: string;
-  addressRegion: string;
-  addressCountry: string;
-  gmtOffset: number;
+  currentPlace: PlaceType | undefined;
   goToNextPlace: () => void;
 }) {
   return (
@@ -65,19 +51,30 @@ function MainSection(props: {
       {/* Map */}
       <MonitorDisplay>
         <div className="w-[160px] h-full">
-          <StaticMap location={props.location} withPin={true} />
+          <StaticMap
+            location={
+              props.currentPlace
+                ? getLocationFromPlace(props.currentPlace)
+                : null
+            }
+            withPin={true}
+          />
         </div>
       </MonitorDisplay>
 
       {/* Address */}
       <div className="flex-grow h-full text-blue-200/70 ">
         <MonitorDisplay>
-          <PlaceAndTime
-            addressSpot={props.addressSpot}
-            addressRegion={props.addressRegion}
-            addressCountry={props.addressCountry}
-            gmtOffset={props.gmtOffset}
-          />
+          {props.currentPlace === undefined ? (
+            <InitialDisplay />
+          ) : (
+            <PlaceAndTime
+              addressSpot={props.currentPlace.addressSpot}
+              addressRegion={props.currentPlace.addressRegion}
+              addressCountry={props.currentPlace.addressCountry}
+              gmtOffset={props.currentPlace.gmtOffset}
+            />
+          )}
         </MonitorDisplay>
       </div>
 
@@ -98,6 +95,14 @@ function FooterSection(props: {}) {
       <div className="text-sm bg-neutral-700 inline-block rounded-md px-2">
         <span className="font-bold text-md">{placeCnt}</span> live cams
       </div>
+    </div>
+  );
+}
+
+function InitialDisplay() {
+  return (
+    <div className="w-full flex-col items-center justify-between px-5 py-3">
+      <div>Click {`"Next"`} to start connecting to webcams...</div>
     </div>
   );
 }

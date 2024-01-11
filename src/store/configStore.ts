@@ -1,19 +1,32 @@
 import { create } from "zustand";
 
 type ConfigState = {
-  autoNextPlace: boolean;
   intervalSecNextPlace: number;
 
-  toggleAutoNextPlace: () => void;
-  setSecondsUntilNextPlace: (seconds: number) => void;
+  setIntervalSecNextPlace: (intervalSecNextPlace: number) => void;
 };
 
 export const useConfigStore = create<ConfigState>((set) => ({
-  autoNextPlace: true,
   intervalSecNextPlace: 10,
 
-  toggleAutoNextPlace: () =>
-    set((state) => ({ autoNextPlace: !state.autoNextPlace })),
-  setSecondsUntilNextPlace: (seconds) =>
-    set(() => ({ intervalSecNextPlace: seconds })),
+  setIntervalSecNextPlace: (intervalSecNextPlace) =>
+    set(() => ({ intervalSecNextPlace: intervalSecNextPlace })),
 }));
+
+/**
+ * Types
+ */
+
+export type ConfigObjectType = {
+  intervalSecNextPlace: number;
+};
+
+/**
+ * Selectors
+ */
+
+export const selectConfigObject = (state: ConfigState): ConfigObjectType => {
+  return {
+    intervalSecNextPlace: state.intervalSecNextPlace,
+  };
+};

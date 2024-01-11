@@ -40,15 +40,12 @@ const PLACE_ID_BANGKOK_SUKHUMVIT_ROAD = "bangkok-sukhumvit-road";
 const PLACE_ID_ST_PETERSBURG_NEVSKY_AVENUE = "st-petersburg-nevsky-avenue";
 const PLACE_ID_KOH_SAMUI_HOOTERS = "koh-samui-hooters";
 const PLACE_ID_VENICE_BEACH = "venice-beach";
-const PLACE_ID_PA_KENSINGTON_AVE = "pa-kensington-ave";
 const PLACE_ID_HEATHROW_AIRPORT = "heathrow-airport";
 const PLACE_ID_BIG_BUDDHA_BEACH = "big-buddha-beach";
 const PLACE_ID_MICHIGAN_PORT_HURON = "michigan-port-huron";
 const PLACE_ID_SHINJUKU_CROSSINGS = "shinjuku-crossings";
 const PLACE_ID_NEWYORK_UPPER_EAST_SIDE = "newyork-upper-east-side";
 const PLACE_ID_BICYCLE_CROSSING_AMSTERDAM = "bicycle-crossing-amsterdam";
-const PLACE_ID_MINI_STORE_IN_DAVAO_CITY = "mini-store-in-davao-city";
-const PLACE_ID_TOKYO_DINER = "tokyo-diner";
 
 export const places = [
   {
@@ -179,19 +176,6 @@ export const places = [
     locationLng: -118.4789,
     locationLat: 33.985,
     gmtOffset: -7,
-    hasAmbientSound: true,
-  },
-  {
-    id: PLACE_ID_PA_KENSINGTON_AVE,
-    youtubeVideoId: "igPGGOLhQUE",
-    categoryId: CATEGORY_CITY,
-    description: "Kensington Ave",
-    addressSpot: "Kensington Ave",
-    addressRegion: "Philadelphia",
-    addressCountry: "USA",
-    locationLng: -75.1652,
-    locationLat: 39.9883,
-    gmtOffset: -4,
     hasAmbientSound: true,
   },
   {
@@ -349,31 +333,5 @@ export const places = [
     locationLat: 52.3792,
     gmtOffset: 2,
     hasAmbientSound: false,
-  },
-  {
-    id: PLACE_ID_MINI_STORE_IN_DAVAO_CITY,
-    youtubeVideoId: "narWF8GFW-U",
-    categoryId: CATEGORY_CITY,
-    description: "Mini Store in Davao City",
-    addressSpot: "Mini Store in Davao City",
-    addressRegion: "Davao City",
-    addressCountry: "Philippines",
-    locationLng: 125.6297,
-    locationLat: 7.1907,
-    gmtOffset: 8,
-    hasAmbientSound: true,
-  },
-  {
-    id: PLACE_ID_TOKYO_DINER,
-    youtubeVideoId: "su__DxROmgM",
-    categoryId: CATEGORY_CITY,
-    description: "Tokyo Diner",
-    addressSpot: "Tokyo Diner",
-    addressRegion: "Tokyo",
-    addressCountry: "Japan",
-    locationLng: 139.7005,
-    locationLat: 35.6591,
-    gmtOffset: 9,
-    hasAmbientSound: true,
   },
 ];

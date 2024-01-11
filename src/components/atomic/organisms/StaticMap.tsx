@@ -5,17 +5,21 @@ import { LocationType } from "@/types/place.types";
 import mapboxgl from "mapbox-gl";
 import { useShallow } from "zustand/react/shallow";
 
-function areEqual(prevProps: any, nextProps: any) {
+interface Props {
+  location: LocationType | null;
+  withPin: boolean;
+}
+
+function areEqual(prevProps: Props, nextProps: Props) {
+  if (!prevProps.location || !nextProps.location) return false;
+
   return (
     prevProps.location.lat === nextProps.location.lat &&
     prevProps.location.lng === nextProps.location.lng
   );
 }
 
-export default memo(function StaticMap(props: {
-  location: LocationType;
-  withPin: boolean;
-}) {
+export default memo(function StaticMap(props: Props) {
   // refs
   const mapContainerRef = useRef<HTMLDivElement>(null);
   // global state
@@ -26,21 +30,21 @@ export default memo(function StaticMap(props: {
   useEffect(() => {
     if (mapboxAccessToken && mapContainerRef.current) {
       const map = initMapBox({
-        location: props.location,
+        location: props.location || { lat: 0, lng: 0 },
         mapboxAccessToken,
         targetElm: mapContainerRef.current,
-        withPin: props.withPin,
+        withPin: props.withPin && props.location !== null,
+        zoom: props.location ? 3 : 0.1,
       });
 
       return () => map.remove();
     }
-  }, [props.location, mapboxAccessToken]);
+  }, [mapboxAccessToken, props.location]);
 
   return (
     <div ref={mapContainerRef} style={{ height: "100%", width: "100%" }} />
   );
-},
-areEqual);
+}, areEqual);
 
 /**
  * Modules
@@ -51,6 +55,7 @@ const initMapBox = (props: {
   location: LocationType;
   targetElm: HTMLDivElement;
   withPin: boolean;
+  zoom: number;
 }) => {
   mapboxgl.accessToken = props.mapboxAccessToken;
 
@@ -58,7 +63,7 @@ const initMapBox = (props: {
     container: props.targetElm || "",
     style: "mapbox://styles/mapbox/dark-v10",
     center: [props.location.lng, props.location.lat],
-    zoom: 3,
+    zoom: props.zoom,
   });
 
   const marker = createMarker();

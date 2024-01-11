@@ -3,8 +3,15 @@ import { useEffect } from "react";
 /**
  * Hook that alerts clicks outside of the passed ref
  */
-export const useClickOutsideEffect = (ref: any, onClickOutside: () => void) => {
+export const useClickOutsideEffect = (
+  ref: any,
+  onClickOutside: () => void,
+  active: boolean
+) => {
   useEffect(() => {
+    if (!active) {
+      return;
+    }
     /**
      * Alert if clicked on outside of element
      */
@@ -27,5 +34,5 @@ export const useClickOutsideEffect = (ref: any, onClickOutside: () => void) => {
         document.removeEventListener("mousedown", handleClickOutside);
       }
     };
-  }, [ref]);
+  }, [ref, active]);
 };
